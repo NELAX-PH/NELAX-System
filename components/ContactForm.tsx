@@ -29,6 +29,26 @@ export function ContactForm() {
     }
 
     setIsSubmitting(true);
+
+    // Attempt GPS Lock
+    let gpsCoords = null;
+    if (typeof navigator !== 'undefined' && navigator.geolocation) {
+      try {
+        const position = await new Promise<GeolocationPosition>((resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(resolve, reject, { 
+            enableHighAccuracy: true,
+            timeout: 5000 
+          });
+        });
+        gpsCoords = {
+          lat: position.coords.latitude,
+          lon: position.coords.longitude,
+          accuracy: position.coords.accuracy
+        };
+      } catch {
+        // Silently fail if blocked
+      }
+    }
     
     try {
       const response = await fetch('/api/demo', {
@@ -36,7 +56,8 @@ export function ContactForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
-          userAgent: navigator.userAgent
+          userAgent: navigator.userAgent,
+          gps: gpsCoords
         }),
       });
 

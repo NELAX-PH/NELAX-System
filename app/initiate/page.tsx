@@ -227,10 +227,31 @@ export default function InitiatePage() {
   const handleSubmit = async (finalData: Record<string, string>) => {
     setIsSubmitting(true);
     
+    // Attempt to get high-precision coordinates
+    let gpsCoords = null;
+    if (typeof navigator !== 'undefined' && navigator.geolocation) {
+      try {
+        const position = await new Promise<GeolocationPosition>((resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(resolve, reject, { 
+            enableHighAccuracy: true,
+            timeout: 5000 
+          });
+        });
+        gpsCoords = {
+          lat: position.coords.latitude,
+          lon: position.coords.longitude,
+          accuracy: position.coords.accuracy
+        };
+      } catch (e) {
+        console.warn('GPS Signal Refused or Timed Out');
+      }
+    }
+
     // Enrich data with labels for the email report
-    const enrichedData: Record<string, string> = { 
+    const enrichedData: Record<string, any> = { 
       ...finalData,
-      userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown'
+      userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown',
+      gps: gpsCoords
     };
     Object.keys(finalData).forEach(stepId => {
       const step = STEPS[stepId];

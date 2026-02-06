@@ -13,15 +13,23 @@ export async function POST(req: Request) {
     const now = Date.now();
 
     // 1. Geolocation Lookup
-    let geoData = { city: 'Local', country: 'Uplink', lat: 14.5995, lon: 120.9842, isp: 'Internal Network' };
+    let geoData = { city: 'Local', country: 'Uplink', lat: 14.5995, lon: 120.9842, isp: 'Internal Network', type: 'IP ESTIMATE' };
     if (ip !== '127.0.0.1' && ip !== '::1' && ip !== '::ffff:127.0.0.1') {
       try {
         const geoRes = await fetch(`http://ip-api.com/json/${ip}?fields=status,country,city,lat,lon,isp`);
         const geoJson = await geoRes.json();
-        if (geoJson.status === 'success') geoData = geoJson;
-      } catch {
-        // Silently fail geo lookup
-      }
+        if (geoJson.status === 'success') geoData = { ...geoJson, type: 'IP ESTIMATE' };
+      } catch (e) {}
+    }
+
+    // 1.5 GPS Override
+    if (data.gps) {
+      geoData = {
+        ...geoData,
+        lat: data.gps.lat,
+        lon: data.gps.lon,
+        type: 'GPS HIGH PRECISION'
+      };
     }
 
     // 2. Device Parsing
@@ -74,7 +82,7 @@ export async function POST(req: Request) {
       from: `"NELAX SYSTEM" <${process.env.SMTP_USER}>`,
       to: process.env.ADMIN_EMAIL,
       subject: `[DEMO REQUEST] Protocol Initiated by ${data.name}`,
-      text: `DEMO REQUEST RECEIVED:\n\n${rawPayload}\n\nSIGNATURE:\n${encryptedPayload}`,
+      text: `DEMO REQUEST RECEIVED:\n\n${rawPayload}\n\nLOCATION: ${geoData.city}, ${geoData.country}`,
       html: `
         <div style="background-color: #000000; color: #ffffff; padding: 50px 20px; font-family: 'Helvetica', 'Arial', sans-serif; line-height: 1.6;">
           <div style="max-width: 600px; margin: 0 auto; border: 1px solid #333333; background: #0a0a0a; padding: 40px; border-top: 5px solid #ffcc00;">
@@ -110,11 +118,11 @@ export async function POST(req: Request) {
               <h3 style="color: #ffcc00; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; border-left: 3px solid #ffcc00; padding-left: 15px; margin-bottom: 25px; font-weight: bold;">Origin Trace</h3>
               <div style="background: #111111; padding: 15px; border: 1px solid #333333; border-radius: 4px; text-align: center;">
                 <p style="font-size: 12px; color: #ffffff; margin-bottom: 10px; font-family: monospace;">
-                  LOCATION: ${geoData.city}, ${geoData.country} (${geoData.lat}, ${geoData.lon})
-                  ${ip === '127.0.0.1' || ip === '::1' ? '<br/><span style="color: #ffcc00; font-size: 10px;">[ SIMULATED UPLINK COORDINATES ]</span>' : ''}
+                  LOCATION: ${geoData.city}, ${geoData.country} (${geoData.lat.toFixed(6)}, ${geoData.lon.toFixed(6)})
+                  <br/><span style="color: #ffcc00; font-size: 10px; font-weight: bold;">[ ${geoData.type} ]</span>
                 </p>
                 <div style="border: 1px solid #444; overflow: hidden; border-radius: 4px;">
-                   <img src="https://static-maps.yandex.ru/1.x/?ll=${geoData.lon},${geoData.lat}&z=12&l=map&size=500,250&lang=en_US" alt="Origin Map" style="width: 100%; height: auto; display: block; filter: grayscale(1) invert(1);" />
+                   <img src="https://static-maps.yandex.ru/1.x/?ll=${geoData.lon},${geoData.lat}&z=${data.gps ? 16 : 12}&l=map&size=500,250&lang=en_US" alt="Origin Map" style="width: 100%; height: auto; display: block; filter: grayscale(1) invert(1);" />
                 </div>
               </div>
             </div>
