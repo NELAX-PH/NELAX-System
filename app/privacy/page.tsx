@@ -58,7 +58,7 @@ export default function PrivacyPage() {
                     <h2 className="text-xl font-bold text-white uppercase tracking-widest letter-spacing-2">Cookie & State Management</h2>
                   </div>
                   <p className="pl-12 text-slate-400">
-                    Our system uses minimal, non-invasive session cookies solely to maintain state during the multi-phase 'Initiate' protocol. We do not utilize third-party tracking pixels, cross-site behavioral monitoring, or fingerprinting techniques for advertising purposes. Our interest is in your system architecture, not your browsing history.
+                    Our system uses minimal, non-invasive session cookies solely to maintain state during the multi-phase &apos;Initiate&apos; protocol. We do not utilize third-party tracking pixels, cross-site behavioral monitoring, or fingerprinting techniques for advertising purposes. Our interest is in your system architecture, not your browsing history.
                   </p>
                 </section>
 
@@ -68,7 +68,7 @@ export default function PrivacyPage() {
                     <h2 className="text-xl font-bold text-white uppercase tracking-widest letter-spacing-2">Data Sovereignty</h2>
                   </div>
                   <p className="pl-12 text-slate-400">
-                    You retain full ownership of your data signals. At any point, you may request a 'Forensic Wipe' (deletion) of your information from our active transmission logs. Upon project completion, all preliminary audit data is archived or purged according to your specific security clearance level.
+                    You retain full ownership of your data signals. At any point, you may request a &apos;Forensic Wipe&apos; (deletion) of your information from our active transmission logs. Upon project completion, all preliminary audit data is archived or purged according to your specific security clearance level.
                   </p>
                 </section>
 

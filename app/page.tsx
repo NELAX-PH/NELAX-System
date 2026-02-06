@@ -454,7 +454,7 @@ export default function Home() {
             {/* Tier 2 */}
             <GlassPanel className="flex flex-col border-white/5 bg-black/20">
               <div className="mb-8">
-                <h3 className="text-xl font-bold text-white mb-2">The "Glass-Metal" Landing</h3>
+                <h3 className="text-xl font-bold text-white mb-2">The &quot;Glass-Metal&quot; Landing</h3>
                 <p className="text-sm text-slate-400">High-conversion first impressions.</p>
               </div>
               <div className="text-4xl font-bold text-white mb-8">

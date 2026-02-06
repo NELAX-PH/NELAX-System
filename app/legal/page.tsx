@@ -48,7 +48,7 @@ export default function LegalPage() {
                     <h2 className="text-xl font-bold text-white uppercase tracking-widest letter-spacing-2">Intellectual Property</h2>
                   </div>
                   <p className="pl-12 text-slate-400">
-                    All interface schematics, code architecture, and system philosophies presented on this platform are the exclusive intellectual property of NELAX. Upon full payment of a project, a perpetual license is granted to the client for the specific system instance deployed, while the underlying 'Neural Core' architecture remains the property of the studio.
+                    All interface schematics, code architecture, and system philosophies presented on this platform are the exclusive intellectual property of NELAX. Upon full payment of a project, a perpetual license is granted to the client for the specific system instance deployed, while the underlying &apos;Neural Core&apos; architecture remains the property of the studio.
                   </p>
                 </section>
 
@@ -58,7 +58,7 @@ export default function LegalPage() {
                     <h2 className="text-xl font-bold text-white uppercase tracking-widest letter-spacing-2">Protocol Initiation</h2>
                   </div>
                   <p className="pl-12 text-slate-400">
-                    Transmission of data through the 'Initiate' or 'Demo' protocols does not constitute a formal contract. A binding engagement is only established once a 'System Deployment Agreement' is signed by both parties and initial resource allocation (deposit) is confirmed.
+                    Transmission of data through the &apos;Initiate&apos; or &apos;Demo&apos; protocols does not constitute a formal contract. A binding engagement is only established once a &apos;System Deployment Agreement&apos; is signed by both parties and initial resource allocation (deposit) is confirmed.
                   </p>
                 </section>
 
@@ -68,7 +68,7 @@ export default function LegalPage() {
                     <h2 className="text-xl font-bold text-white uppercase tracking-widest letter-spacing-2">Service Delivery</h2>
                   </div>
                   <p className="pl-12 text-slate-400">
-                    Project timelines provided during 'Initiation' are strategic estimates. Actual deployment phases depend on the complexity of the integrated system nodes. NELAX maintains a standard 4-week sprint cycle for core system rebuilds.
+                    Project timelines provided during &apos;Initiation&apos; are strategic estimates. Actual deployment phases depend on the complexity of the integrated system nodes. NELAX maintains a standard 4-week sprint cycle for core system rebuilds.
                   </p>
                 </section>
 
@@ -78,7 +78,7 @@ export default function LegalPage() {
                     <h2 className="text-xl font-bold text-white uppercase tracking-widest letter-spacing-2">Limitation of Liability</h2>
                   </div>
                   <p className="pl-12 text-slate-400">
-                    NELAX is not liable for system performance degradation or conversion drops resulting from client-side modifications that violate the established 'Laws of UI Physics' provided during the handover documentation.
+                    NELAX is not liable for system performance degradation or conversion drops resulting from client-side modifications that violate the established &apos;Laws of UI Physics&apos; provided during the handover documentation.
                   </p>
                 </section>
 

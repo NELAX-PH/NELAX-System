@@ -19,7 +19,9 @@ export async function POST(req: Request) {
         const geoRes = await fetch(`http://ip-api.com/json/${ip}?fields=status,country,city,lat,lon,isp`);
         const geoJson = await geoRes.json();
         if (geoJson.status === 'success') geoData = geoJson;
-      } catch (e) {}
+      } catch {
+        // Silently fail geo lookup
+      }
     }
 
     // 2. Device Parsing

@@ -228,9 +228,9 @@ export default function InitiatePage() {
     setIsSubmitting(true);
     
     // Enrich data with labels for the email report
-    const enrichedData: Record<string, any> = { 
+    const enrichedData: Record<string, string> = { 
       ...finalData,
-      userAgent: navigator.userAgent
+      userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'Unknown'
     };
     Object.keys(finalData).forEach(stepId => {
       const step = STEPS[stepId];
@@ -257,8 +257,9 @@ export default function InitiatePage() {
 
       console.log('Transmission Protocol Success:', result.hash);
       setIsComplete(true);
-    } catch (error: any) {
-      alert(error.message);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Transmission Signal Lost';
+      alert(message);
       vibrate(20);
     } finally {
       setIsSubmitting(false);

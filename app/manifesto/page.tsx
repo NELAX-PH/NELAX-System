@@ -92,7 +92,7 @@ export default function ManifestoPage() {
                 </h2>
                 <div className="space-y-6 text-slate-400 text-lg leading-relaxed">
                   <p>
-                    Most 'agencies' focus on the surface. They build brochures that look good in a screenshot but fail in the user's hand. We believe the interface is merely the skin of a deeper, living organism.
+                    Most &apos;agencies&apos; focus on the surface. They build brochures that look good in a screenshot but fail in the user&apos;s hand. We believe the interface is merely the skin of a deeper, living organism.
                   </p>
                   <div className="flex gap-4 items-start">
                     <Network className="text-gold-500 shrink-0 mt-1" size={24} />
@@ -105,7 +105,7 @@ export default function ManifestoPage() {
                     <Sparkles className="text-gold-500 shrink-0 mt-1" size={24} />
                     <div>
                       <h4 className="text-white font-bold mb-1">The Human Hardware</h4>
-                      <p className="text-sm">The human brain hasn't changed in 50,000 years. We design for the biology of sight and the psychology of trust.</p>
+                      <p className="text-sm">The human brain hasn&apos;t changed in 50,000 years. We design for the biology of sight and the psychology of trust.</p>
                     </div>
                   </div>
                 </div>

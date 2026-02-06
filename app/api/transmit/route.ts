@@ -21,7 +21,7 @@ export async function POST(req: Request) {
         if (geoJson.status === 'success') {
           geoData = geoJson;
         }
-      } catch (e) {
+      } catch {
         console.error('Geo Lookup Failed');
       }
     }

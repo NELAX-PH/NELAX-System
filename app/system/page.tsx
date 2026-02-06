@@ -284,7 +284,7 @@ export default function SystemPage() {
             {/* Tier 2 */}
             <GlassPanel className="flex flex-col border-white/5">
               <div className="mb-8">
-                <h3 className="text-xl font-bold text-white mb-2">The "Glass-Metal" Landing Page</h3>
+                <h3 className="text-xl font-bold text-white mb-2">The &quot;Glass-Metal&quot; Landing Page</h3>
                 <p className="text-sm text-slate-400">For brands that need to convert on the first impression.</p>
               </div>
               <div className="text-4xl font-bold text-white mb-8">

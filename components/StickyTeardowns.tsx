@@ -44,6 +44,24 @@ export function StickyTeardowns({ title, subtitle, teardowns }: StickyTeardownsP
   // Set to 100vh per card as requested
   const dynamicHeight = `${teardowns.length * 100}vh`;
 
+  const variants = {
+    initial: (d: number) => ({
+      opacity: 0,
+      x: d > 0 ? 100 : -100,
+      filter: 'blur(10px)'
+    }),
+    animate: {
+      opacity: 1,
+      x: 0,
+      filter: 'blur(0px)'
+    },
+    exit: (d: number) => ({
+      opacity: 0,
+      x: d > 0 ? -100 : 100,
+      filter: 'blur(10px)'
+    })
+  };
+
   return (
     <section ref={targetRef} style={{ height: dynamicHeight }} className="relative w-full">
       <div className="sticky top-0 h-screen w-full flex flex-col justify-center overflow-hidden bg-black/40 backdrop-blur-3xl border-y border-white/5">
@@ -84,21 +102,10 @@ export function StickyTeardowns({ title, subtitle, teardowns }: StickyTeardownsP
             <motion.div
               key={index}
               custom={direction}
-              initial={(d: number) => ({ 
-                opacity: 0, 
-                x: d > 0 ? 100 : -100, 
-                filter: 'blur(10px)' 
-              })}
-              animate={{ 
-                opacity: 1, 
-                x: 0, 
-                filter: 'blur(0px)' 
-              }}
-              exit={(d: number) => ({ 
-                opacity: 0, 
-                x: d > 0 ? -100 : 100, 
-                filter: 'blur(10px)' 
-              })}
+              variants={variants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               className="w-full absolute"
             >

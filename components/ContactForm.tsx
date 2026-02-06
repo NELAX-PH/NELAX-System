@@ -48,8 +48,9 @@ export function ContactForm() {
 
       setIsComplete(true);
       vibrate([10, 50, 10]);
-    } catch (error: any) {
-      alert(error.message);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Signal Interrupted';
+      alert(message);
       vibrate(20);
     } finally {
       setIsSubmitting(false);
