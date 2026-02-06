@@ -46,7 +46,7 @@ Automated reporting system that delivers a high-contrast technical briefing to t
 ### 3. The Demo Protocol (`/demo`)
 A secure channel for requesting architectural previews, governed by a 3-transmission/week rate limit.
 
-## 🚀 Setup & Deployment
+<!-- ## 🚀 Setup & Deployment
 
 ### Environment Configuration
 Create a `.env.local` file in the root directory:
@@ -72,7 +72,7 @@ GOOGLE_REFRESH_TOKEN=your-google-refresh-token
 ```bash
 npm install
 npm run dev
-```
+``` -->
 
 ## 🔒 Security & Rate Limiting
 The system implements a protocol-level lock (in-memory store) restricting transmissions to **2-3 signals per week** per IP address to ensure signal integrity and prevent saturation.
